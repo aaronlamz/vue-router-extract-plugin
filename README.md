@@ -7,3 +7,10 @@ To begin, you'll need to install vue-router-extrace-plugin:
 npm install --sava-dev vue-router-extract-plugin
 
 ```
+
+## Options
+
+## Examples
+
+## License
+MIT
