@@ -1,5 +1,5 @@
 # vue-router-extract-plugin
-This plugin extracts vue-router path and title into new files.
+This plugin extracts vue-router route path and title into new files.
 
 ## Getting Started
 To begin, you'll need to install vue-router-extrace-plugin:
