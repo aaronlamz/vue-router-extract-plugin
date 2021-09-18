@@ -1,0 +1,24 @@
+{
+  "name": "vue-router-extract-plugin",
+  "version": "1.0.0",
+  "description": "This plugin extracts vue-router route path and title into new files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aaronlamz/vue-router-extract-plugin.git"
+  },
+  "keywords": [
+    "vue",
+    "vue-router",
+    "webpack"
+  ],
+  "author": "aaronlam",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Aaronlamz/vue-router-extract-plugin/issues"
+  },
+  "homepage": "https://github.com/Aaronlamz/vue-router-extract-plugin#readme"
+}
