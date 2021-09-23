@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [12.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
     steps:
     - uses: actions/checkout@v2
@@ -28,7 +28,7 @@ jobs:
         git config --global user.email "qylinxia@qq.com"
         git config --global user.name "linjiajun"
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-        npm version major && git push --follow-tags && npm publish
+        npm version patch && git push --follow-tags && npm publish
       env:
         CI: true
         NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
