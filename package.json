@@ -2,7 +2,7 @@
   "name": "vue-router-extract-plugin",
   "version": "1.0.0",
   "description": "This plugin extracts vue-router route path and title into new files.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

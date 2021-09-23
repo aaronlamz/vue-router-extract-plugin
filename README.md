@@ -13,4 +13,4 @@ npm install --save-dev vue-router-extract-plugin
 ## Examples
 
 ## License
-MIT
+[MIT](./LICENSE.md)
