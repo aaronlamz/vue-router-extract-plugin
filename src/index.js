@@ -1,30 +1,38 @@
 /**
- * @Description vue-router-extract-plugin
- * @Author Aaron Lam
- * @Date 20210917
+ * @Description A vue router extraction Webpack plugin.
+ * @Author AaronLam
+ * @Date 2021-09-17
+ * @github https://github.com/Aaronlamz/vue-router-extract-plugin
  */
+
 const fs = require('fs')
 const path = require('path')
 const glob = require('glob')
-const { name } = require('../package.json')
 const resolve = dir => path.resolve(__dirname, dir)
+const defaultOptions = {
+    projectName: 'default',
+    outputFile: 'routemap.js',
+    inputFileDir: resolve('../src/router/modules/*.js')
+}
 
-function VueRouterExtractPlugin() {
-    this.routeDir = resolve('../src/router/modules/*.js')
-    this.routeDirs = glob.sync(this.routeDir)
-    this.routesMap = {}
-    this.routeDirs.forEach(path => {
+function VueRouterExtractPlugin(options = {}) {
+    this.routeMap = {}
+    this.options = { ...defaultOptions, ...options }
+    const inputFileDirList = glob.sync(this.options.inputFileDir)
+    inputFileDirList.forEach(path => {
         try {
             const data = fs.readFileSync(path, 'utf-8')
-            const routePathList = data.match(/path:.*'(.+).*'(?=,)/g)
-                ? data.match(/path:.*'(.+).*'(?=,)/g)
+            const pathRegExp = /path:.*'(.+).*'(?=,)/g
+            const titleRexExp = /(?<=title:).*'(.+)'/g
+            const pathList = data.match(pathRegExp)
+                ? data.match(pathRegExp)
                 : []
-            const routeTitleList = data.match(/(?<=title:).*'(.+)'/g)
-                ? data.match(/(?<=title:).*'(.+)'/g)
+            const titleList = data.match(titleRexExp)
+                ? data.match(titleRexExp)
                 : []
-            if (routePathList.length) {
-                routePathList.forEach((path, index) => {
-                    this.routesMap[path] = routeTitleList[index]
+            if (pathList.length) {
+                pathList.forEach((path, index) => {
+                    this.routeMap[path] = titleList[index]
                 })
             }
         } catch (err) {
@@ -34,19 +42,18 @@ function VueRouterExtractPlugin() {
 }
 
 VueRouterExtractPlugin.prototype.apply = function(compiler) {
-    const routePathTitleMap = this.routesMap
+    const instance = this
     compiler.plugin('emit', function(compilation, callback) {
-        compilation.assets['routesMap.js'] = {
+        compilation.assets[instance.options.outputFile] = {
             source: function() {
-                return `window['${name}_routesMap'] = ${JSON.stringify(
-                    routePathTitleMap
-                )}`
+                return `window['${
+                    instance.options.projectName
+                }-routemap'] = ${JSON.stringify(instance.routeMap)}`
             },
             size: function() {
-                return JSON.stringify(routePathTitleMap).length
+                return JSON.stringify(instance.routeMap).length
             }
         }
-
         callback()
     })
 }
