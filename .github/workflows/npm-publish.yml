@@ -25,6 +25,8 @@ jobs:
         cache: 'npm'
     - name: npm publish
       run: |
+        git config --global user.email "qylinxia@qq.com"
+        git config --global user.name "linjiajun"
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         npm version major && git push --follow-tags && npm publish
       env:
