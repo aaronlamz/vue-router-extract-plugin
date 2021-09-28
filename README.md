@@ -6,6 +6,8 @@
   <h1>vue-router-extract-plugin</h1>
 </div>
 
+[![npm][npm]][npm-url]
+
 # vue-router-extract-plugin
 This plugin extracts vue-router route path and title into new files.
 
