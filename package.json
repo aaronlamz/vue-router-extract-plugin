@@ -1,6 +1,6 @@
 {
   "name": "vue-router-extract-plugin",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "This plugin extracts vue-router route path and title into new files.",
   "main": "lib/index.js",
   "scripts": {
