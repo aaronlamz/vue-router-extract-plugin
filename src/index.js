@@ -13,9 +13,10 @@ class VueRouterExtractPlugin {
         outputFileName: 'routemap.js',
         inputFileDir: '',
     }
+
     constructor(options) {
         this.routeMap = {}
-        this.options = { ...defaultOptions, ...options }
+        this.options = { ...VueRouterExtractPlugin.defaultOptions, ...options }
         const inputFileDirList = glob.sync(this.options.inputFileDir)
         inputFileDirList.forEach((path) => {
             try {
@@ -38,6 +39,7 @@ class VueRouterExtractPlugin {
             }
         })
     }
+
     apply(compiler) {}
 }
 
