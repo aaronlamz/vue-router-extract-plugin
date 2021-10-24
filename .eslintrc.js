@@ -1,5 +1,5 @@
 module.exports = {
-  root: true,
-  parser: "babel-eslint",
-  extends: ["@webpack-contrib/eslint-config-webpack", "prettier"],
+    root: true,
+    parser: 'babel-eslint',
+    extends: ['prettier', 'plugin:prettier/recommended'],
 }
