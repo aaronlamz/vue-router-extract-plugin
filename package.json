@@ -1,10 +1,11 @@
 {
   "name": "vue-router-extract-plugin",
   "version": "2.0.7",
-  "description": "This plugin extracts vue-router route path and title into new files.",
-  "main": "lib/index.js",
+  "description": "This plugin extracts vue-router route path and title into new file.",
+  "main": "dist/cjs.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cross-env NODE_ENV=production babel src -d dist"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,21 @@
   "bugs": {
     "url": "https://github.com/Aaronlamz/vue-router-extract-plugin/issues"
   },
-  "homepage": "https://github.com/Aaronlamz/vue-router-extract-plugin#readme"
+  "homepage": "https://github.com/Aaronlamz/vue-router-extract-plugin#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "@webpack-contrib/eslint-config-webpack": "^3.0.0",
+    "babel-eslint": "^10.1.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1"
+  },
+  "dependencies": {
+    "glob": "^7.2.0"
+  }
 }
