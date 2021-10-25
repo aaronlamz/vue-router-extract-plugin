@@ -9,7 +9,7 @@
 [![build status](https://github.com/Aaronlamz/vue-router-extract-plugin/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/Aaronlamz/vue-router-extract-plugin/actions/workflows/npm-publish.yml)
 
 # vue-router-extract-plugin
-This plugin extracts vue-router route path and title into new files.
+This plugin extracts vue-router route path and title into new file.
 
 ## Getting Started
 To begin, you'll need to install vue-router-extrace-plugin:
