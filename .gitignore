@@ -1,1 +1,15 @@
-node_modules
+logs
+*.log
+npm-debug.log*
+.eslintcache
+/coverage
+/dist
+/test/js
+/test/outputs
+/test/manual/dist
+/local
+/reports
+/node_modules
+.DS_Store
+.idea
+.vscode
