@@ -15,6 +15,7 @@ class VueRouterExtractPlugin {
     }
 
     constructor(options) {
+        this.name = 'VueRouterExtractPlugin'
         this.routeMap = {}
         this.options = { ...VueRouterExtractPlugin.defaultOptions, ...options }
         const inputFileDirList = glob.sync(this.options.inputFileDir)
@@ -40,7 +41,23 @@ class VueRouterExtractPlugin {
         })
     }
 
-    apply(compiler) {}
+    apply(compiler) {
+        const pluginName = VueRouterExtractPlugin.name
+        const instance = this
+        compiler.hooks.emit.tapAsync(pluginName, (compilation, callback) => {
+            compilation.assets[instance.options.outputFileName] = {
+                source() {
+                    return `window['${
+                        instance.options.projectName
+                    }-routemap'] = ${JSON.stringify(instance.routeMap)}`
+                },
+                size() {
+                    return JSON.stringify(instance.routeMap).length
+                },
+            }
+            callback()
+        })
+    }
 }
 
-module.exports = { VueRouterExtractPlugin }
+export default VueRouterExtractPlugin
